@@ -100,18 +100,33 @@ function ProjectCard({
   tech: string[];
 }) {
   return (
-    <article>
-      <h3>{title}</h3>
+    <article className="group flex flex-col rounded-2xl border border-white/10 bg-white/3 p-7 backdrop-blur-sm transition-all duration-300 ease-out hover:-translate-y-2 hover:border-[#FF6400]/60 hover:bg-white/5 hover:shadow-[0_20px_50px_rgba(255,100,0,0.12)] ">
+      <h3 className="text-xl font-semibold tracking-tight text-white transition-colors duration-300 group-hover:text-[#FFC200]">
+        {title}
+        </h3>
 
-      <p>{description}</p>
+      <p className="mt-4 leading-7 text-gray-400">
+        {description}</p>
 
-      <div>
+      <div className="mt-6 flex  flex-wrap gap-2">
         {tech.map((technology) => (
-          <span key={technology}>{technology}</span>
+          <span
+           key={technology}
+           className = "rounded-full border border-[#FF6400]/20 bg-[#FF6400]/5 px-3 py-1 text-xs font-medium text-gray-300"
+           >{technology}
+           </span>
         ))}
       </div>
 
-      <a href="#">View Project</a>
+      <a
+      href="#"
+      className="mt-7 inline-flex w-fit items-center gap-2 text-sm font-semibold text-white transition-colors duration-300 hover:text-[#FFC200]">
+
+      View Project
+      <span className="transition-transform duration-300 group-hover:translate-x-1">
+          →
+      </span>
+      </a>
     </article>
   );
 }
@@ -128,10 +143,14 @@ function ProjectSection({
   }[];
 }) {
   return (
-    <section>
-      <h2>{title}</h2>
+    <section className="border-t border-white/10 px-6 py-20 md:px-12 lg:px-20">
 
-      <div>
+      <h2 className="mb-10 text-center text-3xl font-bold tracking-tight text-[#E0D9D9] md:text-4xl">
+
+        {title}
+      </h2>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 ">
         {projects.map((project) => (
           <ProjectCard
             key={project.title}
@@ -147,9 +166,7 @@ function ProjectSection({
 
 export default function ProjectsPage() {
   return (
-    <main>
-      <h1>Projects</h1>
-
+    <main className="min-h-screen bg-black text-white">
       <ProjectSection
         title="Frontend Projects"
         projects={frontendProjects}
